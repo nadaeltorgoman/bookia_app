@@ -5,7 +5,7 @@ class AppAssets {
 
   // images
   static const String logo = '${imagesPath}logo_splash.svg';
-  static const String background = '${imagesPath}background.png';
+  static const String backgroundImage = '${imagesPath}background_image.png';
   static const String userPlaceholder = '${imagesPath}user_placeholder.png';
   static const String successMark = '${imagesPath}success_mark.svg';
 
@@ -13,7 +13,7 @@ class AppAssets {
   static const String appleIcon = '${iconsPath}apple_icon.svg';
   static const String googleIcon = '${iconsPath}google_icon.svg';
   static const String facebookIcon = '${iconsPath}facebook_icon.svg';
-  static const String eyeIcon = '${iconsPath}eye_icon.svg';
+  static const String eyeIcon = '${iconsPath}eye_button.svg';
   static const String backArrowIcon = '${iconsPath}back_arrow_icon.svg';
   static const String searchIcon = '${iconsPath}search_icon.svg';
   static const String circleCloseIcon = '${iconsPath}circle_close_icon.svg';

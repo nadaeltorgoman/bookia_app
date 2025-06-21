@@ -1,3 +1,5 @@
+import 'package:bookia/core/routers/app_routers.dart';
+import 'package:bookia/core/utils/app_theme.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,10 +11,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple)),
-      //home: ,
+    return MaterialApp.router(
+      theme: AppTheme.lightTheme(),
+      debugShowCheckedModeBanner: false,
+      routerConfig: AppRouters.routers,
     );
   }
 }
