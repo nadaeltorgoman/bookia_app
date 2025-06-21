@@ -30,6 +30,13 @@ class AppTextStyle {
         color: color ?? AppColors.greyColor,
       );
 
+  static TextStyle getBodyText({double? fontSize, FontWeight? fontWeight, Color? color}) =>
+      TextStyle(
+        fontSize: fontSize ?? 16,
+        fontWeight: fontWeight ?? FontWeight.normal,
+        color: color ?? AppColors.greyColor,
+      );
+
   static TextStyle getButton({double? fontSize, FontWeight? fontWeight, Color? color}) => TextStyle(
     fontSize: fontSize ?? 14,
     fontWeight: fontWeight ?? FontWeight.bold,

@@ -5,12 +5,12 @@ import 'package:bookia/core/routers/app_routers.dart';
 import 'package:bookia/core/utils/app_colors.dart';
 import 'package:bookia/core/utils/app_text_style.dart';
 import 'package:bookia/features/auth/presentation/widgets/app_bottom_navigation_bar.dart';
+import 'package:bookia/features/auth/presentation/widgets/app_leading_button.dart';
 import 'package:bookia/features/auth/presentation/widgets/name_text_form_field.dart';
 import 'package:bookia/features/auth/presentation/widgets/social_login_row.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
-import 'package:go_router/go_router.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -24,13 +24,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: InkWell(
-            onTap: () => context.pop(),
-            child: SvgPicture.asset(AppAssets.backArrowIcon, width: 40, height: 40),
-          ),
-        ),
+        leading: AppLeadingButton(),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -50,7 +44,17 @@ class _LoginScreenState extends State<LoginScreen> {
                 keyboardType: TextInputType.visiblePassword,
                 suffixIcon: IconButton(icon: SvgPicture.asset(AppAssets.eyeIcon), onPressed: () {}),
               ),
-              const Gap(30),
+              Align(
+                alignment: Alignment.centerRight,
+                child: TextButton(
+                  onPressed: () => context.navigateTo(AppRouters.forgetPassword),
+                  child: Text(
+                    'Forget Password?',
+                    style: AppTextStyle.getSmallText(color: AppColors.primaryColor),
+                  ),
+                ),
+              ),
+              const Gap(15),
               MainButton(
                 title: 'Login',
                 onPressed: () {
@@ -79,7 +83,7 @@ class _LoginScreenState extends State<LoginScreen> {
       bottomNavigationBar: AppBottomNavigationBar(
         title: 'Don\'t have an account?',
         buttonText: 'Register Now',
-        onPressed: () => context.navigateToReplacement(AppRouters.register),
+        onPressed: () => context.navigateTo(AppRouters.register),
       ),
     );
   }
