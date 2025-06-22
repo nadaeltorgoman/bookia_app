@@ -20,4 +20,21 @@ class AuthRepo {
       return null;
     }
   }
+
+  static Future<UserResponse?> login(RegisterParams params) async {
+    try {
+      var response = await DioProvider.post(
+        endPoint: AppConstants.loginEP,
+        data: params.toJson(),
+      );
+
+      if (response.statusCode == 200) {
+        return UserResponse.fromJson(response.data);
+      } else {
+        return null;
+      }
+    } on Exception catch (_) {
+      return null;
+    }
+  }
 }

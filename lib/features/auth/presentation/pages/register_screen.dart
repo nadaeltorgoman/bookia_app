@@ -37,6 +37,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           } else if (state is AuthAuthenticated) {
             log('--------->Registration successful');
             Navigator.pop(context);
+            showSuccessSnackbar(context, 'Registration successful!');
             context.navigateToReplacement(AppRouters.login);
           } else if (state is AuthUnauthenticated) {
             log('--------->Registration failed');
@@ -52,7 +53,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               child: Padding(
                 padding: const EdgeInsets.all(22),
                 child: Form(
-                  key: cubit.formKey,
+                  key: cubit.formKeyRegister,
                   child: Column(
                     children: [
                       Text('Hello! Register to get started', style: AppTextStyle.getHeadline1()),
@@ -88,21 +89,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         hintText: 'Password',
                         obscureText: cubit.isPasswordVisible,
                         keyboardType: TextInputType.visiblePassword,
-                        suffixIcon:
-                            cubit.isPasswordVisible
-                                ? IconButton(
-                                  icon: SvgPicture.asset(AppAssets.eyeIcon),
-                                  onPressed: () {
-                                    // Toggle password visibility
-                                    cubit.togglePasswordVisibility();
-                                  },
-                                )
-                                : IconButton(
-                                  onPressed: () {
-                                    cubit.togglePasswordVisibility();
-                                  },
-                                  icon: Icon(Icons.visibility_off),
-                                ),
+                        suffixIcon: IconButton(
+                          icon:
+                              cubit.isPasswordVisible
+                                  ? SvgPicture.asset(AppAssets.eyeIcon)
+                                  : Icon(Icons.visibility_off),
+                          onPressed: () {
+                            // Toggle password visibility
+                            cubit.togglePasswordVisibility();
+                          },
+                        ),
+
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Please enter your password';
@@ -118,21 +115,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         hintText: 'Confirm Password',
                         obscureText: cubit.isConfirmPasswordVisible,
                         keyboardType: TextInputType.visiblePassword,
-                        suffixIcon:
-                            cubit.isConfirmPasswordVisible
-                                ? IconButton(
-                                  icon: SvgPicture.asset(AppAssets.eyeIcon),
-                                  onPressed: () {
-                                    // Toggle confirm password visibility
-                                    cubit.toggleConfirmPasswordVisibility();
-                                  },
-                                )
-                                : IconButton(
-                                  onPressed: () {
-                                    cubit.toggleConfirmPasswordVisibility();
-                                  },
-                                  icon: Icon(Icons.visibility_off),
-                                ),
+                        suffixIcon: IconButton(
+                          icon:
+                              cubit.isConfirmPasswordVisible
+                                  ? SvgPicture.asset(AppAssets.eyeIcon)
+                                  : Icon(Icons.visibility_off),
+                          onPressed: () {
+                            // Toggle confirm password visibility
+                            cubit.toggleConfirmPasswordVisibility();
+                          },
+                        ),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Please confirm your password';
@@ -149,7 +141,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       MainButton(
                         title: 'Register',
                         onPressed: () {
-                          if (cubit.formKey.currentState!.validate()) {
+                          if (cubit.formKeyRegister.currentState!.validate()) {
                             cubit.register();
                           }
                         },

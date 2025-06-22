@@ -8,7 +8,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitial());
-  final formKey = GlobalKey<FormState>();
+  final formKeyRegister = GlobalKey<FormState>();
+  final formKeyLogin = GlobalKey<FormState>();
 
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
@@ -18,7 +19,7 @@ class AuthCubit extends Cubit<AuthState> {
   RegisterParams params = RegisterParams();
 
   bool _isPasswordVisible = true;
-  bool _confirmPasswordController = true;
+  bool _confirmPasswordController = false;
 
   bool get isPasswordVisible => _isPasswordVisible;
   bool get isConfirmPasswordVisible => _confirmPasswordController;
@@ -43,6 +44,24 @@ class AuthCubit extends Cubit<AuthState> {
     log('Register request body: ${params.toJson()}');
     try {
       AuthRepo.register(params).then((userResponse) {
+        if (userResponse != null) {
+          emit(AuthAuthenticated());
+        } else {
+          emit(AuthUnauthenticated());
+        }
+      });
+    } on Exception catch (_) {
+      emit(AuthUnauthenticated());
+    }
+  }
+
+  login() {
+    emit(AuthLoading());
+    params.email = emailController.text.trim();
+    params.password = passwordController.text.trim();
+    log('Login request body: ${params.toJson()}');
+    try {
+      AuthRepo.login(params).then((userResponse) {
         if (userResponse != null) {
           emit(AuthAuthenticated());
         } else {
