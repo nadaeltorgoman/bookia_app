@@ -22,39 +22,34 @@ class AppRouters {
   static const String settings = '/settings';
   static const String bookmark = '/bookmark';
 
-
-  static final routers = GoRouter(routes: [
-    GoRoute(
-      path: splash,
-      builder: (context, state) => const SplashScreen(),
-    ),
-    GoRoute(
-      path: welcome,
-      builder: (context, state) => const WelcomeScreen(),
-    ),
-    GoRoute(
-      path: login,
-      builder: (context, state) => const LoginScreen(),
-    ),
-    GoRoute(
-      path: register,
-      builder: (context, state) => const RegisterScreen(),
-    ),
-    GoRoute(
-      path: forgetPassword,
-      builder: (context, state) => const ForgetPasswordScreen(),
-    ),
-    GoRoute(
-      path: otpVerification,
-      builder: (context, state) => const OTPVerificationScreen(),
-    ),
-    GoRoute(
-      path: newPassword,
-      builder: (context, state) => const NewPasswordScreen(),
-    ),
-    GoRoute(
-      path: success,
-      builder: (context, state) => const SuccessScreen(),
-    ),
-  ]);
+  static final routers = GoRouter(
+    routes: [
+      GoRoute(path: splash, builder: (context, state) => const SplashScreen()),
+      GoRoute(
+        path: welcome,
+        builder: (context, state) => const WelcomeScreen(),
+      ),
+      GoRoute(path: login, builder: (context, state) => const LoginScreen()),
+      GoRoute(
+        path: register,
+        builder: (context, state) => const RegisterScreen(),
+      ),
+      GoRoute(
+        path: forgetPassword,
+        builder: (context, state) => const ForgetPasswordScreen(),
+      ),
+      GoRoute(
+        path: otpVerification,
+        builder: (context, state) => const OTPVerificationScreen(),
+      ),
+      GoRoute(
+        path: newPassword,
+        builder: (context, state) => const NewPasswordScreen(),
+      ),
+      GoRoute(
+        path: success,
+        builder: (context, state) => const SuccessScreen(),
+      ),
+    ],
+  );
 }

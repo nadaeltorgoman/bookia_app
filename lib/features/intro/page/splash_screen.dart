@@ -21,6 +21,7 @@ class _SplashScreenState extends State<SplashScreen> {
       context.navigateToReplacement(AppRouters.welcome);
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

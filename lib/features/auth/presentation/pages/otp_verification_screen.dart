@@ -85,7 +85,8 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
       bottomNavigationBar: AppBottomNavigationBar(
         title: 'Didn\'t received code?',
         buttonText: 'Resend Code',
-        onPressed: () => context.navigateToReplacement(AppRouters.otpVerification),
+        onPressed:
+            () => context.navigateToReplacement(AppRouters.otpVerification),
       ),
     );
   }

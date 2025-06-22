@@ -33,7 +33,11 @@ class SocialLoginRow extends StatelessWidget {
           border: Border.all(color: AppColors.borderColor),
           borderRadius: BorderRadius.circular(10),
         ),
-        child: SvgPicture.asset(assetName ?? AppAssets.facebookIcon, width: 40, height: 40),
+        child: SvgPicture.asset(
+          assetName ?? AppAssets.facebookIcon,
+          width: 40,
+          height: 40,
+        ),
       ),
     );
   }

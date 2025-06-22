@@ -4,9 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
 class AppLeadingButton extends StatelessWidget {
-  const AppLeadingButton({
-    super.key,
-  });
+  const AppLeadingButton({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -3,7 +3,12 @@ import 'package:bookia/core/utils/app_text_style.dart';
 import 'package:flutter/material.dart';
 
 class AppBottomNavigationBar extends StatelessWidget {
-  const AppBottomNavigationBar({super.key, this.title, this.buttonText, this.onPressed});
+  const AppBottomNavigationBar({
+    super.key,
+    this.title,
+    this.buttonText,
+    this.onPressed,
+  });
   final String? title;
   final String? buttonText;
   final VoidCallback? onPressed;

@@ -37,14 +37,20 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
                 hintText: 'Enter your New Password',
                 obscureText: true,
                 keyboardType: TextInputType.visiblePassword,
-                suffixIcon: IconButton(icon: SvgPicture.asset(AppAssets.eyeIcon), onPressed: () {}),
+                suffixIcon: IconButton(
+                  icon: SvgPicture.asset(AppAssets.eyeIcon),
+                  onPressed: () {},
+                ),
               ),
               const Gap(15),
               NameTextFormField(
                 hintText: 'Confirm New Password',
                 obscureText: true,
                 keyboardType: TextInputType.visiblePassword,
-                suffixIcon: IconButton(icon: SvgPicture.asset(AppAssets.eyeIcon), onPressed: () {}),
+                suffixIcon: IconButton(
+                  icon: SvgPicture.asset(AppAssets.eyeIcon),
+                  onPressed: () {},
+                ),
               ),
               const Gap(30),
               MainButton(

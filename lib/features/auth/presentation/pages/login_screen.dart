@@ -23,15 +23,16 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: AppLeadingButton(),
-      ),
+      appBar: AppBar(leading: AppLeadingButton()),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(22),
           child: Column(
             children: [
-              Text('Welcome back! Glad to see you, Again!', style: AppTextStyle.getHeadline1()),
+              Text(
+                'Welcome back! Glad to see you, Again!',
+                style: AppTextStyle.getHeadline1(),
+              ),
               const Gap(30),
               NameTextFormField(
                 hintText: 'Enter your E-mail',
@@ -42,15 +43,21 @@ class _LoginScreenState extends State<LoginScreen> {
                 hintText: 'Enter your Password',
                 obscureText: true,
                 keyboardType: TextInputType.visiblePassword,
-                suffixIcon: IconButton(icon: SvgPicture.asset(AppAssets.eyeIcon), onPressed: () {}),
+                suffixIcon: IconButton(
+                  icon: SvgPicture.asset(AppAssets.eyeIcon),
+                  onPressed: () {},
+                ),
               ),
               Align(
                 alignment: Alignment.centerRight,
                 child: TextButton(
-                  onPressed: () => context.navigateTo(AppRouters.forgetPassword),
+                  onPressed:
+                      () => context.navigateTo(AppRouters.forgetPassword),
                   child: Text(
                     'Forget Password?',
-                    style: AppTextStyle.getSmallText(color: AppColors.primaryColor),
+                    style: AppTextStyle.getSmallText(
+                      color: AppColors.primaryColor,
+                    ),
                   ),
                 ),
               ),
@@ -68,7 +75,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   Gap(10),
                   Text(
                     'Or Login with',
-                    style: AppTextStyle.getSmallText(color: AppColors.greyColor),
+                    style: AppTextStyle.getSmallText(
+                      color: AppColors.greyColor,
+                    ),
                   ),
                   Gap(10),
                   Expanded(child: Divider()),

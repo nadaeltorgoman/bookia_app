@@ -34,6 +34,7 @@ class NameTextFormField extends StatelessWidget {
       //   filter ?? FilteringTextInputFormatter.allow(RegExp(r'^[a-zA-Z0-9@._-]+$')),
       //   LengthLimitingTextInputFormatter(length ?? 10),
       // ],
+      inputFormatters: [FilteringTextInputFormatter.deny(RegExp(r'^\s+'))],
       decoration: InputDecoration(
         hintText: hintText ?? 'Enter your email',
         suffixIconConstraints: const BoxConstraints(minWidth: 50),

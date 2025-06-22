@@ -19,6 +19,7 @@ class AppAssets {
   static const String circleCloseIcon = '${iconsPath}circle_close_icon.svg';
   static const String logoutIcon = '${iconsPath}logout_icon.svg';
   static const String cameraIcon = '${iconsPath}camera_icon.svg';
+  static const String loadingLottie = '${iconsPath}loading.json';
 
   // navigation bar icons
   static const String homeIcon = '${iconsPath}Home.svg';

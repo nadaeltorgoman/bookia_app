@@ -22,7 +22,11 @@ class AppTheme {
       onSurface: AppColors.darkColor,
       onError: AppColors.errorColor,
     ),
-    dividerTheme: DividerThemeData(color: AppColors.borderColor, thickness: 1, space: 20),
+    dividerTheme: DividerThemeData(
+      color: AppColors.borderColor,
+      thickness: 1,
+      space: 20,
+    ),
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
       fillColor: AppColors.accentColor,

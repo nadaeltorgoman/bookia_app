@@ -22,7 +22,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     return Scaffold(
       body: Stack(
         children: [
-          Positioned.fill(child: Image.asset(AppAssets.backgroundImage, fit: BoxFit.cover)),
+          Positioned.fill(
+            child: Image.asset(AppAssets.backgroundImage, fit: BoxFit.cover),
+          ),
           Center(
             child: Center(
               child: Column(
@@ -30,8 +32,14 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 children: [
                   //const Spacer(flex: 1),
                   Gap(context.screenHeight * 0.15),
-                  SvgPicture.asset(AppAssets.logo, width: context.screenWidth * 0.6),
-                  Text('Order Your Book Now!', style: AppTextStyle.getTitleText()),
+                  SvgPicture.asset(
+                    AppAssets.logo,
+                    width: context.screenWidth * 0.6,
+                  ),
+                  Text(
+                    'Order Your Book Now!',
+                    style: AppTextStyle.getTitleText(),
+                  ),
                   const Spacer(),
                   //Gap(context.screenHeight * 0.5),
                   MainButton(

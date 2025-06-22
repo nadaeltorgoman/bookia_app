@@ -32,7 +32,9 @@ class MainButton extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
-            side: BorderSide(color: borderColor ?? AppTheme.lightTheme().colorScheme.primary),
+            side: BorderSide(
+              color: borderColor ?? AppTheme.lightTheme().colorScheme.primary,
+            ),
           ),
           backgroundColor: bgColor ?? AppTheme.lightTheme().colorScheme.primary,
         ),
