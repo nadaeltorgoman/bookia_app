@@ -55,7 +55,7 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Padding(
                 padding: const EdgeInsets.all(22),
                 child: Form(
-                  key: cubit.formKeyLogin,
+                  key: cubit.formKey,
                   child: Column(
                     children: [
                       Text(
@@ -115,7 +115,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         title: 'Login',
                         onPressed: () {
                           // Handle login action
-                          if (cubit.formKeyLogin.currentState!.validate()) {
+                          if (cubit.formKey.currentState!.validate()) {
                             cubit.login();
                           }
                         },

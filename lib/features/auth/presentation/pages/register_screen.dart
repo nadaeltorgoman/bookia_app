@@ -53,7 +53,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               child: Padding(
                 padding: const EdgeInsets.all(22),
                 child: Form(
-                  key: cubit.formKeyRegister,
+                  key: cubit.formKey,
                   child: Column(
                     children: [
                       Text('Hello! Register to get started', style: AppTextStyle.getHeadline1()),
@@ -141,7 +141,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       MainButton(
                         title: 'Register',
                         onPressed: () {
-                          if (cubit.formKeyRegister.currentState!.validate()) {
+                          if (cubit.formKey.currentState!.validate()) {
                             cubit.register();
                           }
                         },
