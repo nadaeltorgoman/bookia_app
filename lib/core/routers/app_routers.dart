@@ -40,11 +40,15 @@ class AppRouters {
       ),
       GoRoute(
         path: otpVerification,
-        builder: (context, state) => const OTPVerificationScreen(),
+        builder: (context, state) => OTPVerificationScreen(
+          email: state.extra as String?,
+        ),
       ),
       GoRoute(
         path: newPassword,
-        builder: (context, state) => const NewPasswordScreen(),
+        builder: (context, state) => NewPasswordScreen(
+          verifiedCode: state.extra as int?,
+        ),
       ),
       GoRoute(
         path: success,

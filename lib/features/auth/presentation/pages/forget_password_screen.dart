@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bookia/components/buttons/main_button.dart';
 import 'package:bookia/components/dialogs/loading_dailog.dart';
 import 'package:bookia/core/extensions/navigation.dart';
@@ -31,8 +33,12 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
             showLoadingDialog(context);
           } else if (state is AuthAuthenticated) {
             Navigator.pop(context);
+            log('${context.read<AuthCubit>().emailController}');
             showSuccessSnackbar(context, 'Password reset link sent!');
-            context.navigateTo(AppRouters.otpVerification);
+            context.navigateTo(
+              AppRouters.otpVerification,
+              arguments: context.read<AuthCubit>().emailController.text,
+            );
           } else if (state is AuthUnauthenticated) {
             Navigator.pop(context);
             showErrorSnackbar(context, 'Failed to send password reset link.');

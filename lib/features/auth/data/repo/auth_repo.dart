@@ -54,4 +54,38 @@ class AuthRepo {
       return null;
     }
   }
+
+  static Future<UserResponse?> otpVerification(RegisterParams params) async {
+    try {
+      var response = await DioProvider.post(
+        endPoint: AppConstants.checkForgetPasswordEP,
+        data: params.toJson(),
+      );
+
+      if (response.statusCode == 200) {
+        return UserResponse.fromJson(response.data);
+      } else {
+        return null;
+      }
+    } on Exception catch (_) {
+      return null;
+    }
+  }
+
+  static Future<UserResponse?> newPassword(RegisterParams params) async {
+    try {
+      var response = await DioProvider.post(
+        endPoint: AppConstants.newPasswordEP,
+        data: params.toJson(),
+      );
+
+      if (response.statusCode == 200) {
+        return UserResponse.fromJson(response.data);
+      } else {
+        return null;
+      }
+    } on Exception catch (_) {
+      return null;
+    }
+  }
 }

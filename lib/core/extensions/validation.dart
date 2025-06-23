@@ -10,3 +10,8 @@ bool isPasswordValid(String password) {
 bool isConfirmPasswordValid(String password, String confirmPassword) {
   return password == confirmPassword;
 }
+
+bool isNumeric(String value) {
+  final numericRegex = RegExp(r'^\d+$');
+  return numericRegex.hasMatch(value);
+}
