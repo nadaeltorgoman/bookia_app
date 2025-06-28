@@ -2,11 +2,11 @@ class AppAssets {
   // paths
   static const String imagesPath = 'assets/images/';
   static const String iconsPath = 'assets/icons/';
+  static const String menuPath = 'assets/menu/';
 
   // images
   static const String logo = '${imagesPath}logo_splash.svg';
   static const String backgroundImage = '${imagesPath}background_image.png';
-  static const String userPlaceholder = '${imagesPath}user_placeholder.png';
   static const String successMark = '${imagesPath}success_mark.svg';
 
   // icons
@@ -22,8 +22,8 @@ class AppAssets {
   static const String loadingLottie = '${iconsPath}loading.json';
 
   // navigation bar icons
-  static const String homeIcon = '${iconsPath}Home.svg';
-  static const String profileIcon = '${iconsPath}Profile.svg';
-  static const String bookmarkIcon = '${iconsPath}Bookmark.svg';
-  static const String categoryIcon = '${iconsPath}Category.svg';
+  static const String homeIcon = '${menuPath}Home.svg';
+  static const String profileIcon = '${menuPath}Profile.svg';
+  static const String bookmarkIcon = '${menuPath}Bookmark.svg';
+  static const String categoryIcon = '${menuPath}Category.svg';
 }

@@ -37,13 +37,16 @@ class _LoginScreenState extends State<LoginScreen> {
             log('--------->Login in progress');
             showLoadingDialog(context);
           } else if (state is AuthAuthenticated) {
-            //context.navigateToNamedReplacement(AppRouters.home);
             log('--------->Login successful');
-            Navigator.pop(context);
+            context.navigateBack();
+            log(
+              'User authenticated successfully: email: ${context.read<AuthCubit>().emailController.text}',
+            );
+            context.navigateToNamedReplacement(AppRouters.main);
             showSuccessSnackbar(context, 'Login successful!');
           } else if (state is AuthUnauthenticated) {
             log('--------->Login failed');
-            Navigator.pop(context);
+            context.navigateBack();
             showErrorSnackbar(context, 'Login failed. Please try again.');
           }
         },
@@ -103,10 +106,14 @@ class _LoginScreenState extends State<LoginScreen> {
                       Align(
                         alignment: Alignment.centerRight,
                         child: TextButton(
-                          onPressed: () => context.navigateTo(AppRouters.forgetPassword),
+                          onPressed:
+                              () =>
+                                  context.navigateTo(AppRouters.forgetPassword),
                           child: Text(
                             'Forget Password?',
-                            style: AppTextStyle.getSmallText(color: AppColors.primaryColor),
+                            style: AppTextStyle.getSmallText(
+                              color: AppColors.primaryColor,
+                            ),
                           ),
                         ),
                       ),
@@ -127,7 +134,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           Gap(10),
                           Text(
                             'Or Login with',
-                            style: AppTextStyle.getSmallText(color: AppColors.greyColor),
+                            style: AppTextStyle.getSmallText(
+                              color: AppColors.greyColor,
+                            ),
                           ),
                           Gap(10),
                           Expanded(child: Divider()),

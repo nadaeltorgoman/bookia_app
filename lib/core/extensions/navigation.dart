@@ -6,7 +6,7 @@ extension NavigationExtension on BuildContext {
     push(routeName, extra: arguments);
   }
 
-  void navigateToReplacement(String routeName,  {Object? arguments}) {
+  void navigateToReplacement(String routeName, {Object? arguments}) {
     pushReplacement(routeName, extra: arguments);
   }
 

@@ -36,12 +36,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
             showLoadingDialog(context);
           } else if (state is AuthAuthenticated) {
             log('--------->Registration successful');
-            Navigator.pop(context);
+            context.navigateBack();
             showSuccessSnackbar(context, 'Registration successful!');
             context.navigateToReplacement(AppRouters.login);
           } else if (state is AuthUnauthenticated) {
             log('--------->Registration failed');
-            Navigator.pop(context);
+            context.navigateBack();
             showErrorSnackbar(context, 'Registration failed');
           }
         },
@@ -56,7 +56,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   key: cubit.formKey,
                   child: Column(
                     children: [
-                      Text('Hello! Register to get started', style: AppTextStyle.getHeadline1()),
+                      Text(
+                        'Hello! Register to get started',
+                        style: AppTextStyle.getHeadline1(),
+                      ),
                       const Gap(30),
                       NameTextFormField(
                         controller: cubit.usernameController,

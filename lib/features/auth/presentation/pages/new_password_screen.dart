@@ -34,12 +34,15 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
           if (state is AuthLoading) {
             showLoadingDialog(context);
           } else if (state is AuthAuthenticated) {
-            Navigator.pop(context);
+            context.navigateBack();
             showSuccessSnackbar(context, 'Password reset successful!');
             context.navigateToReplacement(AppRouters.success);
           } else if (state is AuthUnauthenticated) {
-            Navigator.pop(context);
-            showErrorSnackbar(context, 'Failed to reset password. Please try again.');
+            context.navigateBack();
+            showErrorSnackbar(
+              context,
+              'Failed to reset password. Please try again.',
+            );
             log('Failed to reset password: ${state.errorMessage}');
           }
         },
@@ -54,7 +57,10 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
                   padding: const EdgeInsets.all(22),
                   child: Column(
                     children: [
-                      Text('Forget Password?', style: AppTextStyle.getHeadline1()),
+                      Text(
+                        'Forget Password?',
+                        style: AppTextStyle.getHeadline1(),
+                      ),
                       const Gap(15),
                       Text(
                         'Don\'t worry! It occurs. Please enter the email address linked with your account.',
@@ -88,14 +94,18 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
                       const Gap(15),
                       NameTextFormField(
                         hintText: 'Confirm New Password',
-                        obscureText: cubit.isConfirmPasswordVisible ? false : true,
+                        obscureText:
+                            cubit.isConfirmPasswordVisible ? false : true,
                         keyboardType: TextInputType.visiblePassword,
                         controller: cubit.confirmNewPasswordController,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Please confirm your new password';
                           }
-                          if (!isConfirmPasswordValid(value, cubit.newPasswordController.text)) {
+                          if (!isConfirmPasswordValid(
+                            value,
+                            cubit.newPasswordController.text,
+                          )) {
                             return 'Passwords do not match';
                           }
                           return null;
@@ -116,7 +126,9 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
                         onPressed: () {
                           // Handle login action
                           if (cubit.formKey.currentState?.validate() ?? false) {
-                            log('----------> verifyCode: ${widget.verifiedCode}');
+                            log(
+                              '----------> verifyCode: ${widget.verifiedCode}',
+                            );
                             cubit.newPassword(widget.verifiedCode);
                           }
                         },

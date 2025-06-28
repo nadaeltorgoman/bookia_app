@@ -6,21 +6,19 @@ import 'package:bookia/features/auth/presentation/pages/register_screen.dart';
 import 'package:bookia/features/auth/presentation/pages/success_screen.dart';
 import 'package:bookia/features/intro/page/splash_screen.dart';
 import 'package:bookia/features/intro/page/welcome_screen.dart';
+import 'package:bookia/features/main/presentation/pages/main_app_screen.dart';
 import 'package:go_router/go_router.dart';
 
 class AppRouters {
   static const String splash = '/';
   static const String welcome = '/welcome';
-  static const String home = '/home';
   static const String login = '/login';
   static const String register = '/register';
   static const String forgetPassword = '/forget-password';
   static const String otpVerification = '/otp-verification';
   static const String newPassword = '/new-password';
   static const String success = '/success';
-  static const String profile = '/profile';
-  static const String settings = '/settings';
-  static const String bookmark = '/bookmark';
+  static const String main = '/main';
 
   static final routers = GoRouter(
     routes: [
@@ -40,20 +38,21 @@ class AppRouters {
       ),
       GoRoute(
         path: otpVerification,
-        builder: (context, state) => OTPVerificationScreen(
-          email: state.extra as String?,
-        ),
+        builder:
+            (context, state) =>
+                OTPVerificationScreen(email: state.extra as String?),
       ),
       GoRoute(
         path: newPassword,
-        builder: (context, state) => NewPasswordScreen(
-          verifiedCode: state.extra as int?,
-        ),
+        builder:
+            (context, state) =>
+                NewPasswordScreen(verifiedCode: state.extra as int?),
       ),
       GoRoute(
         path: success,
         builder: (context, state) => const SuccessScreen(),
       ),
+      GoRoute(path: main, builder: (context, state) => const MainAppScreen()),
     ],
   );
 }

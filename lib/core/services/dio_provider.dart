@@ -4,11 +4,7 @@ import 'package:dio/dio.dart';
 class DioProvider {
   static late Dio dio;
   static init() {
-    dio = Dio(
-      BaseOptions(
-        baseUrl: AppConstants.baseUrl,
-      ),
-    );
+    dio = Dio(BaseOptions(baseUrl: AppConstants.baseUrl));
   }
 
   static Future<Response> get({

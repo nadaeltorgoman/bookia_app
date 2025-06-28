@@ -1,6 +1,8 @@
 import 'dart:developer';
 
+import 'package:bookia/core/services/cache_helper.dart';
 import 'package:bookia/features/auth/data/model/request/register_params.dart';
+import 'package:bookia/features/auth/data/model/response/user_response/user.dart';
 import 'package:bookia/features/auth/data/repo/auth_repo.dart';
 import 'package:bookia/features/auth/presentation/cubit/auth_state.dart';
 import 'package:flutter/material.dart';
@@ -13,10 +15,12 @@ class AuthCubit extends Cubit<AuthState> {
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final TextEditingController confirmPasswordController = TextEditingController();
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
   final TextEditingController otpController = TextEditingController();
   final TextEditingController newPasswordController = TextEditingController();
-  final TextEditingController confirmNewPasswordController = TextEditingController();
+  final TextEditingController confirmNewPasswordController =
+      TextEditingController();
 
   RegisterParams params = RegisterParams();
 
@@ -47,6 +51,9 @@ class AuthCubit extends Cubit<AuthState> {
     try {
       AuthRepo.register(params).then((userResponse) {
         if (userResponse != null) {
+          // add shared preferences
+          SharedPref.setUserInfo(userResponse.data?.user ?? User());
+          SharedPref.setUserToken(userResponse.data?.token ?? '');
           emit(AuthAuthenticated());
         } else {
           emit(AuthUnauthenticated());
@@ -61,18 +68,24 @@ class AuthCubit extends Cubit<AuthState> {
     emit(AuthLoading());
     params.email = emailController.text.trim();
     params.password = passwordController.text.trim();
-    log('Login request body: ${params.toJson()}');
-    try {
-      AuthRepo.login(params).then((userResponse) {
-        if (userResponse != null) {
-          emit(AuthAuthenticated());
-        } else {
-          emit(AuthUnauthenticated());
-        }
-      });
-    } on Exception catch (_) {
-      emit(AuthUnauthenticated());
-    }
+    debugPrint('Login request body: ${params.toJson()}');
+
+    AuthRepo.login(params)
+        .then((userResponse) {
+          if (userResponse != null && userResponse.data?.token != null) {
+            debugPrint('Login successful, token: ${userResponse.data?.token}');
+            SharedPref.setUserInfo(userResponse.data?.user ?? User());
+            SharedPref.setUserToken(userResponse.data?.token ?? '');
+            emit(AuthAuthenticated());
+          } else {
+            debugPrint('Login failed - null response or no token');
+            emit(AuthUnauthenticated());
+          }
+        })
+        .catchError((error) {
+          debugPrint('Login error: $error');
+          emit(AuthUnauthenticated(errorMessage: error.toString()));
+        });
   }
 
   forgetPassword() {
@@ -95,7 +108,9 @@ class AuthCubit extends Cubit<AuthState> {
   otpVerification(String? email) {
     emit(AuthLoading());
     params.email = email;
-    params.verifyCode = int.tryParse(otpController.text.trim()); // Parse OTP to int
+    params.verifyCode = int.tryParse(
+      otpController.text.trim(),
+    ); // Parse OTP to int
     log('OTP Verification request body: ${params.toJson()}');
     try {
       AuthRepo.otpVerification(params).then((userResponse) {

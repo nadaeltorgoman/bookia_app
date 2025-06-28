@@ -32,7 +32,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
           if (state is AuthLoading) {
             showLoadingDialog(context);
           } else if (state is AuthAuthenticated) {
-            Navigator.pop(context);
+            context.navigateBack();
             log('${context.read<AuthCubit>().emailController}');
             showSuccessSnackbar(context, 'Password reset link sent!');
             context.navigateTo(
@@ -40,7 +40,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
               arguments: context.read<AuthCubit>().emailController.text,
             );
           } else if (state is AuthUnauthenticated) {
-            Navigator.pop(context);
+            context.navigateBack();
             showErrorSnackbar(context, 'Failed to send password reset link.');
           }
         },
@@ -56,7 +56,10 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Forget Password?', style: AppTextStyle.getHeadline1()),
+                      Text(
+                        'Forget Password?',
+                        style: AppTextStyle.getHeadline1(),
+                      ),
                       const Gap(15),
                       Text(
                         'Don\'t worry! It occurs. Please enter the email address linked with your account.',
