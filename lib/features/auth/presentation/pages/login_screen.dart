@@ -111,7 +111,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   context.navigateTo(AppRouters.forgetPassword),
                           child: Text(
                             'Forget Password?',
-                            style: AppTextStyle.getSmallText(
+                            style: AppTextStyle.getBodyText(
                               color: AppColors.primaryColor,
                             ),
                           ),
@@ -134,7 +134,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           Gap(10),
                           Text(
                             'Or Login with',
-                            style: AppTextStyle.getSmallText(
+                            style: AppTextStyle.getBodyText(
                               color: AppColors.greyColor,
                             ),
                           ),

@@ -21,13 +21,13 @@ class AppBottomNavigationBar extends StatelessWidget {
         children: [
           Text(
             title ?? 'Don\'t have an account?',
-            style: AppTextStyle.getSmallText(color: AppColors.darkColor),
+            style: AppTextStyle.getBodyText(color: AppColors.darkColor),
           ),
           TextButton(
             onPressed: onPressed,
             child: Text(
               buttonText ?? 'Login',
-              style: AppTextStyle.getSmallText(color: AppColors.primaryColor),
+              style: AppTextStyle.getBodyText(color: AppColors.primaryColor),
             ),
           ),
         ],

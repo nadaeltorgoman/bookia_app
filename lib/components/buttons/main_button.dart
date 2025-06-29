@@ -11,6 +11,7 @@ class MainButton extends StatelessWidget {
   final Color? borderColor;
   final double? width;
   final double? height;
+  final Color? colorBorderSide;
   const MainButton({
     super.key,
     this.title,
@@ -20,6 +21,7 @@ class MainButton extends StatelessWidget {
     this.borderColor,
     this.width,
     this.height,
+    this.colorBorderSide,
   });
 
   @override
@@ -32,9 +34,7 @@ class MainButton extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
-            side: BorderSide(
-              color: borderColor ?? AppTheme.lightTheme().colorScheme.primary,
-            ),
+            side: BorderSide(color: colorBorderSide ?? AppTheme.lightTheme().colorScheme.primary),
           ),
           backgroundColor: bgColor ?? AppTheme.lightTheme().colorScheme.primary,
         ),

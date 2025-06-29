@@ -1,6 +1,7 @@
 import 'package:bookia/core/constants/app_assets.dart';
 import 'package:bookia/core/utils/app_colors.dart';
 import 'package:bookia/features/home/data/model/response/slider_response/slider.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -31,19 +32,17 @@ class _CarouselWidgetState extends State<CarouselWidget> {
                   return widget.sliders.isEmpty
                       ? Container(
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
+                          borderRadius: BorderRadius.circular(10),
                           color: AppColors.borderColor,
                         ),
                       )
-                      : Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          image: DecorationImage(
-                            image: NetworkImage(
-                              widget.sliders[index].image ?? AppAssets.backgroundImage,
-                            ),
-                            fit: BoxFit.cover,
-                          ),
+                      : ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: CachedNetworkImage(
+                          imageUrl: widget.sliders[index].image ?? AppAssets.backgroundImage,
+                          width: double.infinity,
+                          fit: BoxFit.cover,
+                          errorWidget: (context, url, error) => const Icon(Icons.error, color: AppColors.errorColor, size: 30),
                         ),
                       );
                 },

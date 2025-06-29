@@ -37,7 +37,7 @@ class AppTextStyle {
     FontWeight? fontWeight,
     Color? color,
   }) => TextStyle(
-    fontSize: fontSize ?? 16,
+    fontSize: fontSize ?? 12,
     fontWeight: fontWeight ?? FontWeight.normal,
     color: color ?? AppColors.greyColor,
   );

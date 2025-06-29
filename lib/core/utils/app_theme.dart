@@ -30,7 +30,7 @@ class AppTheme {
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
       fillColor: AppColors.accentColor,
-      hintStyle: AppTextStyle.getSmallText(color: AppColors.greyColor),
+      hintStyle: AppTextStyle.getBodyText(color: AppColors.greyColor),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
         borderSide: BorderSide(color: AppColors.borderColor),
