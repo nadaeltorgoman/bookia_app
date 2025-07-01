@@ -7,3 +7,5 @@ class HomeLoading extends HomeState {}
 class HomeLoaded extends HomeState {}
 
 class HomeError extends HomeState {}
+
+class AddedToWishList extends HomeState{}

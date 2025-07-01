@@ -10,6 +10,9 @@ class MainAppBarWidget extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(leading: AppLeadingButton(), actions: [action ?? Container()]);
+    return AppBar(
+      leading: AppLeadingButton(),
+      actions: [action ?? Container()],
+    );
   }
 }

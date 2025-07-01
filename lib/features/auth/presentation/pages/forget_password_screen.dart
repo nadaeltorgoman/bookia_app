@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:bookia/components/buttons/main_button.dart';
-import 'package:bookia/components/dialogs/loading_dailog.dart';
+import 'package:bookia/components/dialogs/loading_dialog.dart';
 import 'package:bookia/core/extensions/navigation.dart';
 import 'package:bookia/core/extensions/validation.dart';
 import 'package:bookia/core/routers/app_routers.dart';
@@ -56,10 +56,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        'Forget Password?',
-                        style: AppTextStyle.getHeadline1(),
-                      ),
+                      Text('Forget Password?', style: AppTextStyle.getHeadline1()),
                       const Gap(15),
                       Text(
                         'Don\'t worry! It occurs. Please enter the email address linked with your account.',

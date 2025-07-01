@@ -26,23 +26,40 @@ class AppRouters {
   static final routers = GoRouter(
     routes: [
       GoRoute(path: splash, builder: (context, state) => const SplashScreen()),
-      GoRoute(path: welcome, builder: (context, state) => const WelcomeScreen()),
+      GoRoute(
+        path: welcome,
+        builder: (context, state) => const WelcomeScreen(),
+      ),
       GoRoute(path: login, builder: (context, state) => const LoginScreen()),
-      GoRoute(path: register, builder: (context, state) => const RegisterScreen()),
-      GoRoute(path: forgetPassword, builder: (context, state) => const ForgetPasswordScreen()),
+      GoRoute(
+        path: register,
+        builder: (context, state) => const RegisterScreen(),
+      ),
+      GoRoute(
+        path: forgetPassword,
+        builder: (context, state) => const ForgetPasswordScreen(),
+      ),
       GoRoute(
         path: otpVerification,
-        builder: (context, state) => OTPVerificationScreen(email: state.extra as String?),
+        builder:
+            (context, state) =>
+                OTPVerificationScreen(email: state.extra as String?),
       ),
       GoRoute(
         path: newPassword,
-        builder: (context, state) => NewPasswordScreen(verifiedCode: state.extra as int?),
+        builder:
+            (context, state) =>
+                NewPasswordScreen(verifiedCode: state.extra as int?),
       ),
-      GoRoute(path: success, builder: (context, state) => const SuccessScreen()),
+      GoRoute(
+        path: success,
+        builder: (context, state) => const SuccessScreen(),
+      ),
       GoRoute(path: main, builder: (context, state) => const MainAppScreen()),
       GoRoute(
         path: bookDetails,
-        builder: (context, state) => BookDetailsScreen(book: state.extra as Product),
+        builder:
+            (context, state) => BookDetailsScreen(book: state.extra as Product),
       ),
     ],
   );

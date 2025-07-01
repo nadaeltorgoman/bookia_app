@@ -21,7 +21,11 @@ class BestSellerWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Best Sellers', style: AppTextStyle.getHeadline2(), textAlign: TextAlign.start),
+          Text(
+            'Best Sellers',
+            style: AppTextStyle.getHeadline2(),
+            textAlign: TextAlign.start,
+          ),
           const Gap(10),
           Skeletonizer(
             enabled: bestSellers.isEmpty,
@@ -48,7 +52,10 @@ class BestSellerWidget extends StatelessWidget {
                 }
                 return GestureDetector(
                   onTap: () {
-                    context.navigateTo(AppRouters.bookDetails, arguments: bestSellers[index]);
+                    context.navigateTo(
+                      AppRouters.bookDetails,
+                      arguments: bestSellers[index],
+                    );
                   },
                   child: Container(
                     padding: const EdgeInsets.all(11.0),
@@ -73,14 +80,17 @@ class BestSellerWidget extends StatelessWidget {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(10),
                               child: CachedNetworkImage(
-                                imageUrl:bestSellers[index].image ?? AppAssets.backgroundImage,
+                                imageUrl:
+                                    bestSellers[index].image ??
+                                    AppAssets.backgroundImage,
                                 width: double.infinity,
                                 fit: BoxFit.cover,
-                                errorWidget: (context, url, error) => const Icon(
-                                  Icons.error,
-                                  color: AppColors.errorColor,
-                                  size: 30,
-                                ),
+                                errorWidget:
+                                    (context, url, error) => const Icon(
+                                      Icons.error,
+                                      color: AppColors.errorColor,
+                                      size: 30,
+                                    ),
                               ),
                             ),
                           ),
@@ -90,7 +100,9 @@ class BestSellerWidget extends StatelessWidget {
                           height: 50,
                           child: Text(
                             bestSellers[index].name ?? 'No Title',
-                            style: AppTextStyle.getBodyText(color: AppColors.darkColor),
+                            style: AppTextStyle.getBodyText(
+                              color: AppColors.darkColor,
+                            ),
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
                           ),

@@ -29,6 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
             width: 120, // Use a finite width
             fit: BoxFit.cover,
           ),
+          centerTitle: false,
           actions: [
             IconButton(
               icon: SvgPicture.asset(AppAssets.searchIcon, width: 24),

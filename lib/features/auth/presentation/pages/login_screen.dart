@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:bookia/components/buttons/main_button.dart';
-import 'package:bookia/components/dialogs/loading_dailog.dart';
+import 'package:bookia/components/dialogs/loading_dialog.dart';
 import 'package:bookia/core/constants/app_assets.dart';
 import 'package:bookia/core/extensions/navigation.dart';
 import 'package:bookia/core/extensions/validation.dart';
@@ -106,14 +106,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       Align(
                         alignment: Alignment.centerRight,
                         child: TextButton(
-                          onPressed:
-                              () =>
-                                  context.navigateTo(AppRouters.forgetPassword),
+                          onPressed: () => context.navigateTo(AppRouters.forgetPassword),
                           child: Text(
                             'Forget Password?',
-                            style: AppTextStyle.getBodyText(
-                              color: AppColors.primaryColor,
-                            ),
+                            style: AppTextStyle.getBodyText(color: AppColors.primaryColor),
                           ),
                         ),
                       ),
@@ -134,9 +130,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           Gap(10),
                           Text(
                             'Or Login with',
-                            style: AppTextStyle.getBodyText(
-                              color: AppColors.greyColor,
-                            ),
+                            style: AppTextStyle.getBodyText(color: AppColors.greyColor),
                           ),
                           Gap(10),
                           Expanded(child: Divider()),

@@ -4,6 +4,7 @@ import 'package:bookia/core/constants/app_assets.dart';
 import 'package:bookia/core/services/cache_helper.dart';
 import 'package:bookia/core/utils/app_colors.dart';
 import 'package:bookia/features/home/presentation/pages/home_screen.dart';
+import 'package:bookia/features/wishList/presentation/pages/wishlist_Screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -38,9 +39,7 @@ class _MainAppScreenState extends State<MainAppScreen> {
   Widget build(BuildContext context) {
     final List<Widget> bottomBarPages = [
       HomeScreen(),
-      Center(
-        child: Text(SharedPref.getUserInfo()?.email.toString() ?? 'Page 2'),
-      ),
+      WishListScreen(),
       Center(
         child: Text(SharedPref.getUserInfo()?.phone.toString() ?? 'Page 3'),
       ),

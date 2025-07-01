@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:bookia/components/buttons/main_button.dart';
-import 'package:bookia/components/dialogs/loading_dailog.dart';
+import 'package:bookia/components/dialogs/loading_dialog.dart';
 import 'package:bookia/core/constants/app_assets.dart';
 import 'package:bookia/core/extensions/navigation.dart';
 import 'package:bookia/core/extensions/validation.dart';
@@ -56,10 +56,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   key: cubit.formKey,
                   child: Column(
                     children: [
-                      Text(
-                        'Hello! Register to get started',
-                        style: AppTextStyle.getHeadline1(),
-                      ),
+                      Text('Hello! Register to get started', style: AppTextStyle.getHeadline1()),
                       const Gap(30),
                       NameTextFormField(
                         controller: cubit.usernameController,

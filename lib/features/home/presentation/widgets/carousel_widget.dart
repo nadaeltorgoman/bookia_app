@@ -39,10 +39,17 @@ class _CarouselWidgetState extends State<CarouselWidget> {
                       : ClipRRect(
                         borderRadius: BorderRadius.circular(10),
                         child: CachedNetworkImage(
-                          imageUrl: widget.sliders[index].image ?? AppAssets.backgroundImage,
+                          imageUrl:
+                              widget.sliders[index].image ??
+                              AppAssets.backgroundImage,
                           width: double.infinity,
                           fit: BoxFit.cover,
-                          errorWidget: (context, url, error) => const Icon(Icons.error, color: AppColors.errorColor, size: 30),
+                          errorWidget:
+                              (context, url, error) => const Icon(
+                                Icons.error,
+                                color: AppColors.errorColor,
+                                size: 30,
+                              ),
                         ),
                       );
                 },

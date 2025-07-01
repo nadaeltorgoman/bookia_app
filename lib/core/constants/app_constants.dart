@@ -8,4 +8,9 @@ class AppConstants {
 
   static const String sliderEP = 'sliders';
   static const String bestSellersEP = 'products-bestseller';
+
+  // Wishlist
+  static const String wishlistEP = 'wishlist';
+  static const String addToWishlistEP = 'add-to-wishlist';
+  static const String removeFromWishlistEP = 'remove-from-wishlist';
 }

@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:bookia/components/dialogs/loading_dailog.dart';
+import 'package:bookia/components/dialogs/loading_dialog.dart';
 import 'package:bookia/core/extensions/validation.dart';
 import 'package:bookia/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:bookia/features/auth/presentation/cubit/auth_state.dart';
@@ -39,16 +39,11 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
             showSuccessSnackbar(context, 'OTP verification successful!');
             context.navigateToReplacement(
               AppRouters.newPassword,
-              arguments: int.tryParse(
-                context.read<AuthCubit>().otpController.text,
-              ),
+              arguments: int.tryParse(context.read<AuthCubit>().otpController.text),
             );
           } else if (state is AuthUnauthenticated) {
             context.navigateBack();
-            showErrorSnackbar(
-              context,
-              'OTP verification failed. Please try again.',
-            );
+            showErrorSnackbar(context, 'OTP verification failed. Please try again.');
           }
         },
         builder: (context, state) {
@@ -63,10 +58,7 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        'OTP Verification',
-                        style: AppTextStyle.getHeadline1(),
-                      ),
+                      Text('OTP Verification', style: AppTextStyle.getHeadline1()),
                       const Gap(15),
                       Text(
                         'Enter the verification code we just sent on your email address.',
@@ -88,19 +80,13 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                           },
                           onCompleted: (value) {
                             log('OTP entered: $value');
-                            cubit.params.verifyCode = int.tryParse(
-                              value.trim(),
-                            );
-                            log(
-                              'OTP verification request body: ${cubit.params.toJson()}',
-                            );
+                            cubit.params.verifyCode = int.tryParse(value.trim());
+                            log('OTP verification request body: ${cubit.params.toJson()}');
                           },
                           defaultPinTheme: PinTheme(
                             width: 56,
                             height: 56,
-                            textStyle: AppTextStyle.getHeadline2(
-                              color: Colors.black,
-                            ),
+                            textStyle: AppTextStyle.getHeadline2(color: Colors.black),
                             decoration: BoxDecoration(
                               border: Border.all(color: AppColors.borderColor),
                               borderRadius: BorderRadius.circular(8),
@@ -110,9 +96,7 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                           focusedPinTheme: PinTheme(
                             width: 56,
                             height: 56,
-                            textStyle: AppTextStyle.getHeadline2(
-                              color: Colors.black,
-                            ),
+                            textStyle: AppTextStyle.getHeadline2(color: Colors.black),
                             decoration: BoxDecoration(
                               border: Border.all(color: AppColors.primaryColor),
                               borderRadius: BorderRadius.circular(8),
@@ -121,9 +105,7 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                           submittedPinTheme: PinTheme(
                             width: 56,
                             height: 56,
-                            textStyle: AppTextStyle.getHeadline2(
-                              color: Colors.black,
-                            ),
+                            textStyle: AppTextStyle.getHeadline2(color: Colors.black),
                             decoration: BoxDecoration(
                               border: Border.all(color: AppColors.primaryColor),
                               borderRadius: BorderRadius.circular(8),
@@ -137,9 +119,7 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                         onPressed: () {
                           // Handle login action
                           if (cubit.formKey.currentState?.validate() ?? false) {
-                            log(
-                              'OTP verification request body: ${cubit.params.toJson()}',
-                            );
+                            log('OTP verification request body: ${cubit.params.toJson()}');
                             cubit.otpVerification(widget.email);
                           }
                         },
@@ -152,9 +132,7 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
             bottomNavigationBar: AppBottomNavigationBar(
               title: 'Didn\'t received code?',
               buttonText: 'Resend Code',
-              onPressed:
-                  () =>
-                      context.navigateToReplacement(AppRouters.forgetPassword),
+              onPressed: () => context.navigateToReplacement(AppRouters.forgetPassword),
             ),
           );
         },

@@ -9,6 +9,7 @@ class AppTheme {
       foregroundColor: AppColors.darkColor,
       surfaceTintColor: Colors.transparent,
       elevation: 0,
+      centerTitle: true,
     ),
     scaffoldBackgroundColor: AppColors.whiteColor,
     fontFamily: 'DMSerifDisplay',
