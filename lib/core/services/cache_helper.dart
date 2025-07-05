@@ -34,12 +34,20 @@ class SharedPref {
   ///! get userInfo from shared preferences
   static User? getUserInfo() {
     var cacheUserInfoJson = getString(userInfoKey);
-    var stringToJson = json.decode(cacheUserInfoJson!);
+    if (cacheUserInfoJson == null || cacheUserInfoJson.isEmpty) return null;
+    var stringToJson = json.decode(cacheUserInfoJson);
     // or
     // use jsonDecode from dart:convert
     // var stringToJson = jsonDecode(cacheUserInfoJson!);
     var jsonToModel = User.fromJson(stringToJson);
     return jsonToModel;
+  }
+
+  ///! remove userInfo from shared preferences
+  static Future<void> removeUserInfo() async {
+    await removeData(userInfoKey);
+    await removeData(userTokenKey);
+    debugPrint('User info and token removed from shared preferences');
   }
 
   ///! save userToken to shared preferences
@@ -113,12 +121,7 @@ class SharedPref {
   }
 
   ///! remove data from shared preferences
-  static Future<bool> removeData(String key) async {
-    return await _prefs.remove(key);
-  }
-
-  ///! clear all data from shared preferences
-  static Future<bool> clearData() async {
-    return await _prefs.clear();
+  static Future<void> removeData(String key) async {
+    await _prefs.remove(key);
   }
 }

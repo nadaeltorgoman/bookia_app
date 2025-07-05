@@ -1,10 +1,10 @@
 import 'dart:developer';
 import 'package:animated_notch_bottom_bar/animated_notch_bottom_bar/animated_notch_bottom_bar.dart';
 import 'package:bookia/core/constants/app_assets.dart';
-import 'package:bookia/core/services/cache_helper.dart';
 import 'package:bookia/core/utils/app_colors.dart';
 import 'package:bookia/features/Cart/presentation/pages/cart_screen.dart';
 import 'package:bookia/features/home/presentation/pages/home_screen.dart';
+import 'package:bookia/features/profile/presentation/pages/profile_screen.dart';
 import 'package:bookia/features/wishList/presentation/pages/wish_list_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -18,9 +18,7 @@ class MainAppScreen extends StatefulWidget {
 
 class _MainAppScreenState extends State<MainAppScreen> {
   final _pageController = PageController(initialPage: 0);
-  final NotchBottomBarController _controller = NotchBottomBarController(
-    index: 0,
-  );
+  final NotchBottomBarController _controller = NotchBottomBarController(index: 0);
 
   @override
   void initState() {
@@ -42,18 +40,13 @@ class _MainAppScreenState extends State<MainAppScreen> {
       HomeScreen(),
       WishListScreen(),
       CartScreen(),
-      Center(
-        child: Text(SharedPref.getUserInfo()?.address.toString() ?? 'Page 4'),
-      ),
+      ProfileScreen(),
     ];
     return Scaffold(
       body: PageView(
         controller: _pageController,
         physics: const NeverScrollableScrollPhysics(),
-        children: List.generate(
-          bottomBarPages.length,
-          (index) => bottomBarPages[index],
-        ),
+        children: List.generate(bottomBarPages.length, (index) => bottomBarPages[index]),
       ),
       bottomNavigationBar: BottomNavigationBar(
         showSelectedLabels: false,
@@ -64,9 +57,7 @@ class _MainAppScreenState extends State<MainAppScreen> {
             icon: SvgPicture.asset(
               AppAssets.homeIcon,
               colorFilter: ColorFilter.mode(
-                _controller.index == 0
-                    ? AppColors.primaryColor
-                    : AppColors.greyColor,
+                _controller.index == 0 ? AppColors.primaryColor : AppColors.greyColor,
                 BlendMode.srcIn,
               ),
             ),
@@ -76,9 +67,7 @@ class _MainAppScreenState extends State<MainAppScreen> {
             icon: SvgPicture.asset(
               AppAssets.bookmarkIcon,
               colorFilter: ColorFilter.mode(
-                _controller.index == 1
-                    ? AppColors.primaryColor
-                    : AppColors.greyColor,
+                _controller.index == 1 ? AppColors.primaryColor : AppColors.greyColor,
                 BlendMode.srcIn,
               ),
             ),
@@ -88,9 +77,7 @@ class _MainAppScreenState extends State<MainAppScreen> {
             icon: SvgPicture.asset(
               AppAssets.categoryIcon,
               colorFilter: ColorFilter.mode(
-                _controller.index == 2
-                    ? AppColors.primaryColor
-                    : AppColors.greyColor,
+                _controller.index == 2 ? AppColors.primaryColor : AppColors.greyColor,
                 BlendMode.srcIn,
               ),
             ),
@@ -100,9 +87,7 @@ class _MainAppScreenState extends State<MainAppScreen> {
             icon: SvgPicture.asset(
               AppAssets.profileIcon,
               colorFilter: ColorFilter.mode(
-                _controller.index == 3
-                    ? AppColors.primaryColor
-                    : AppColors.greyColor,
+                _controller.index == 3 ? AppColors.primaryColor : AppColors.greyColor,
                 BlendMode.srcIn,
               ),
             ),

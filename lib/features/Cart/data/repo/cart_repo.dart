@@ -55,9 +55,7 @@ class CartRepo {
     }
   }
 
-  static Future<GetCartResponse?> updateCart(
-    UpdateCartParams params,
-  ) async {
+  static Future<GetCartResponse?> updateCart(UpdateCartParams params) async {
     var response = await DioProvider.post(
       endPoint: AppConstants.updateCartEP,
       data: params.toJson(),
@@ -71,6 +69,22 @@ class CartRepo {
       }
     } on Exception catch (_) {
       return null;
+    }
+  }
+
+  static Future<bool> checkoutOrder() async {
+    var response = await DioProvider.get(
+      endPoint: AppConstants.checkoutEP,
+      headers: {'Authorization': 'Bearer ${SharedPref.getUserToken()}'},
+    );
+    try {
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        return true;
+      } else {
+        throw Exception('Failed to clear Cart');
+      }
+    } on Exception catch (_) {
+      return false;
     }
   }
 }

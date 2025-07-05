@@ -5,6 +5,7 @@ class AppConstants {
   static const String forgetPasswordEP = 'forget-password';
   static const String checkForgetPasswordEP = 'check-forget-password';
   static const String newPasswordEP = 'reset-password';
+  static const String logoutEP = 'logout';
 
   static const String sliderEP = 'sliders';
   static const String bestSellersEP = 'products-bestseller';
@@ -19,4 +20,5 @@ class AppConstants {
   static const String addToCartEP = 'add-to-cart';
   static const String updateCartEP = 'update-cart';
   static const String removeFromCartEP = 'remove-from-cart';
+  static const String checkoutEP = 'checkout';
 }

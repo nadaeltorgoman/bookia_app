@@ -19,3 +19,7 @@ class CartItemRemovedSuccessfully extends CartState {}
 class UpdateCartLoading extends CartState {}
 
 class CartUpdatedSuccessfully extends CartState {}
+
+class CheckoutLoading extends CartState {}
+
+class CheckoutSuccess extends CartState {}

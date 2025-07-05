@@ -67,9 +67,25 @@ class CartBuilder extends StatelessWidget {
                     ],
                   ),
                   const Gap(5),
-                  Text(
-                    '${book.itemProductPriceAfterDiscount}',
-                    style: AppTextStyle.getBodyText(color: AppColors.blackColor),
+                  Row(
+                    children: [
+                      Text(
+                        '\$${book.itemProductPriceAfterDiscount}',
+                        style: AppTextStyle.getBodyText(color: AppColors.blackColor),
+                      ),
+                      // we can use a ternary operator to check if the discount is applied
+                      // if (book.itemProductDiscount != null && book.itemProductDiscount != 0)...[]
+                      // or use visibility widget to show/hide the discount price
+                      if (book.itemProductDiscount != null && book.itemProductDiscount != 0)
+                        const Gap(10),
+                      Text(
+                        '\$${book.itemProductPrice}',
+                        style: AppTextStyle.getBodyText(
+                          color: AppColors.greyColor,
+                          decoration: TextDecoration.lineThrough,
+                        ),
+                      ),
+                    ],
                   ),
                   const Gap(5),
                   Row(
@@ -84,7 +100,7 @@ class CartBuilder extends StatelessWidget {
                         child: IconButton(
                           icon: const Icon(Icons.remove, color: AppColors.blackColor, size: 15),
                           onPressed: () {
-                            if ((book.itemQuantity ?? 0) <= 1) {
+                            if ((book.itemQuantity ?? 0) > 1) {
                               onUpdateQuantity(
                                 UpdateCartParams(
                                   cartItemId: book.itemId ?? 0,
@@ -129,6 +145,12 @@ class CartBuilder extends StatelessWidget {
                           },
                         ),
                       ),
+                      Spacer(),
+                      Text(
+                        '\$${book.itemTotal?.toStringAsFixed(2)}',
+                        style: AppTextStyle.getBodyText(color: AppColors.primaryColor),
+                      ),
+                      const Gap(10),
                     ],
                   ),
                 ],

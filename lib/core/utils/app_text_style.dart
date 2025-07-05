@@ -46,10 +46,12 @@ class AppTextStyle {
     double? fontSize,
     FontWeight? fontWeight,
     Color? color,
+    TextDecoration? decoration,
   }) => TextStyle(
     fontSize: fontSize ?? 16,
     fontWeight: fontWeight ?? FontWeight.normal,
     color: color ?? AppColors.greyColor,
+    decoration: decoration ?? TextDecoration.none,
   );
 
   static TextStyle getButton({

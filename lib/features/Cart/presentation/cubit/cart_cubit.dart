@@ -52,4 +52,15 @@ class CartCubit extends Cubit<CartState> {
       emit(CartError(message: 'An error occurred while updating the cart'));
     }
   }
+
+  Future<void> checkout() async {
+    emit(CheckoutLoading());
+    CartRepo.checkoutOrder()
+        .then((response) {
+          emit(CheckoutSuccess());
+        })
+        .catchError((error) {
+          emit(CartError(message: 'An error occurred during checkout'));
+        });
+  }
 }
