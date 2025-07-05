@@ -5,7 +5,7 @@ import 'package:bookia/core/services/cache_helper.dart';
 import 'package:bookia/core/utils/app_colors.dart';
 import 'package:bookia/features/Cart/presentation/pages/cart_screen.dart';
 import 'package:bookia/features/home/presentation/pages/home_screen.dart';
-import 'package:bookia/features/wishList/presentation/pages/wishlist_Screen.dart';
+import 'package:bookia/features/wishList/presentation/pages/wish_list_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
