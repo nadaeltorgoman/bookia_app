@@ -41,6 +41,13 @@ class WishListScreen extends StatelessWidget {
       log('Removing item from wishlist...');
 
       showLoadingDialog(context);
+    } else if (state is AddedToCartSuccessfully) {
+      context.pop();
+      log('Item added to cart successfully');
+      showSuccessSnackbar(context, 'Item added to cart successfully');
+    } else if (state is WishListLoading) {
+      log('Loading wishlist data...');
+      showLoadingDialog(context);
     }
   }
 
@@ -59,6 +66,7 @@ class WishListScreen extends StatelessWidget {
                 },
                 onAddToCart: (productId) {
                   log('Adding item to cart with ID: $productId');
+                  cubit.addToCart(productId);
                   // Implement add to cart functionality here
                 },
               ),

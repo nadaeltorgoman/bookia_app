@@ -11,3 +11,5 @@ class WishListError extends WishListState {}
 class RemoveFromWishListLoading extends WishListState {}
 
 class WishListItemRemovedSuccessfully extends WishListState {}
+
+class AddedToCartSuccessfully extends WishListState {}

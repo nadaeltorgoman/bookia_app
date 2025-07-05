@@ -121,7 +121,10 @@ class CartBuilder extends StatelessWidget {
                                 ),
                               );
                             } else {
-                              showErrorSnackbar(context, 'Quantity cannot exceed stock');
+                              showErrorSnackbar(
+                                context,
+                                'Quantity cannot exceed stock "${book.itemProductStock}"',
+                              );
                             }
                           },
                         ),
