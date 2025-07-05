@@ -3,6 +3,7 @@ import 'package:animated_notch_bottom_bar/animated_notch_bottom_bar/animated_not
 import 'package:bookia/core/constants/app_assets.dart';
 import 'package:bookia/core/services/cache_helper.dart';
 import 'package:bookia/core/utils/app_colors.dart';
+import 'package:bookia/features/Cart/presentation/pages/cart_screen.dart';
 import 'package:bookia/features/home/presentation/pages/home_screen.dart';
 import 'package:bookia/features/wishList/presentation/pages/wishlist_Screen.dart';
 import 'package:flutter/material.dart';
@@ -40,9 +41,7 @@ class _MainAppScreenState extends State<MainAppScreen> {
     final List<Widget> bottomBarPages = [
       HomeScreen(),
       WishListScreen(),
-      Center(
-        child: Text(SharedPref.getUserInfo()?.phone.toString() ?? 'Page 3'),
-      ),
+      CartScreen(),
       Center(
         child: Text(SharedPref.getUserInfo()?.address.toString() ?? 'Page 4'),
       ),

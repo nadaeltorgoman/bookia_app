@@ -101,7 +101,7 @@ class WishListBuilder extends StatelessWidget {
       separatorBuilder: (context, index) {
         return const Gap(10);
       },
-      itemCount: books.length ,
+      itemCount: books.length,
     );
   }
 }

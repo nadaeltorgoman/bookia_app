@@ -106,10 +106,14 @@ class _LoginScreenState extends State<LoginScreen> {
                       Align(
                         alignment: Alignment.centerRight,
                         child: TextButton(
-                          onPressed: () => context.navigateTo(AppRouters.forgetPassword),
+                          onPressed:
+                              () =>
+                                  context.navigateTo(AppRouters.forgetPassword),
                           child: Text(
                             'Forget Password?',
-                            style: AppTextStyle.getBodyText(color: AppColors.primaryColor),
+                            style: AppTextStyle.getBodyText(
+                              color: AppColors.primaryColor,
+                            ),
                           ),
                         ),
                       ),
@@ -130,7 +134,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           Gap(10),
                           Text(
                             'Or Login with',
-                            style: AppTextStyle.getBodyText(color: AppColors.greyColor),
+                            style: AppTextStyle.getBodyText(
+                              color: AppColors.greyColor,
+                            ),
                           ),
                           Gap(10),
                           Expanded(child: Divider()),

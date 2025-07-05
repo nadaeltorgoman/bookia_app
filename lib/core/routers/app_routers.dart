@@ -1,3 +1,4 @@
+import 'package:bookia/features/Cart/presentation/pages/cart_screen.dart';
 import 'package:bookia/features/auth/presentation/pages/forget_password_screen.dart';
 import 'package:bookia/features/auth/presentation/pages/login_screen.dart';
 import 'package:bookia/features/auth/presentation/pages/new_password_screen.dart';
@@ -22,6 +23,7 @@ class AppRouters {
   static const String success = '/success';
   static const String main = '/main';
   static const String bookDetails = '/book-details';
+  static const String cart = '/cart';
 
   static final routers = GoRouter(
     routes: [
@@ -61,6 +63,7 @@ class AppRouters {
         builder:
             (context, state) => BookDetailsScreen(book: state.extra as Product),
       ),
+      GoRoute(path: cart, builder: (context, state) => const CartScreen()),
     ],
   );
 }

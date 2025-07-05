@@ -27,7 +27,7 @@ class BookDetailsScreen extends StatelessWidget {
         listener: (context, state) {
           if (state is AddedToWishList) {
             context.pop();
-            showSuccessSnackbar(context, '${book.name} added to wishlist');
+            showSuccessSnackbar(context, '${book.name} ${state.message}');
           } else if (state is HomeError) {
             context.pop();
             showErrorSnackbar(context, 'Error fetching book details');
@@ -65,26 +65,35 @@ class BookDetailsScreen extends StatelessWidget {
                             width: 200,
                             fit: BoxFit.cover,
                             errorWidget:
-                                (context, url, error) =>
-                                    const Icon(Icons.error, color: AppColors.errorColor, size: 30),
+                                (context, url, error) => const Icon(
+                                  Icons.error,
+                                  color: AppColors.errorColor,
+                                  size: 30,
+                                ),
                           ),
                         ),
                       ),
                       const Gap(15),
                       Text(
                         book.name ?? 'No Title',
-                        style: AppTextStyle.getHeadline1(color: AppColors.darkColor),
+                        style: AppTextStyle.getHeadline1(
+                          color: AppColors.darkColor,
+                        ),
                         textAlign: TextAlign.center,
                       ),
                       const Gap(10),
                       Text(
                         book.category ?? 'Unknown Category',
-                        style: AppTextStyle.getBodyText(color: AppColors.primaryColor),
+                        style: AppTextStyle.getBodyText(
+                          color: AppColors.primaryColor,
+                        ),
                       ),
                       const Gap(15),
                       Text(
                         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                        style: AppTextStyle.getSmallText(color: AppColors.darkColor),
+                        style: AppTextStyle.getSmallText(
+                          color: AppColors.darkColor,
+                        ),
                         textAlign: TextAlign.center,
                       ),
                     ],
@@ -99,7 +108,9 @@ class BookDetailsScreen extends StatelessWidget {
                 children: [
                   Text(
                     '\$${(double.tryParse(book.price ?? '')?.toStringAsFixed(2) ?? '0.00')}',
-                    style: AppTextStyle.getHeadline2(color: AppColors.darkColor),
+                    style: AppTextStyle.getHeadline2(
+                      color: AppColors.darkColor,
+                    ),
                   ),
                   const Gap(16),
                   Expanded(
@@ -109,9 +120,8 @@ class BookDetailsScreen extends StatelessWidget {
                       colorBorderSide: Colors.transparent,
                       onPressed: () {
                         // Handle add to cart action
-                        ScaffoldMessenger.of(
-                          context,
-                        ).showSnackBar(SnackBar(content: Text('${book.name} added to cart')));
+                        context.read<HomeCubit>().addToCart(book.id ?? 0);
+                        
                       },
                     ),
                   ),

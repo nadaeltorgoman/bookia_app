@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 class EmptyWidget extends StatelessWidget {
-  const EmptyWidget({
-    super.key,
-  });
+  const EmptyWidget({super.key, required this.message, required this.icon});
+  final String message;
+  final IconData icon;
 
   @override
   Widget build(BuildContext context) {
@@ -14,12 +14,12 @@ class EmptyWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Icon(
-            Icons.not_interested_rounded,
+            icon,
             size: 100,
             color: AppColors.primaryColor,
           ),
           const Gap(20),
-          const Center(child: Text('No items in wishlist')),
+          Center(child: Text('No items in $message')),
         ],
       ),
     );

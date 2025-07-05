@@ -56,7 +56,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   key: cubit.formKey,
                   child: Column(
                     children: [
-                      Text('Hello! Register to get started', style: AppTextStyle.getHeadline1()),
+                      Text(
+                        'Hello! Register to get started',
+                        style: AppTextStyle.getHeadline1(),
+                      ),
                       const Gap(30),
                       NameTextFormField(
                         controller: cubit.usernameController,

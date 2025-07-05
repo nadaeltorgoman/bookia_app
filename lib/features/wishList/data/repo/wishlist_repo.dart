@@ -45,7 +45,6 @@ class WishlistRepo {
     );
     try {
       if (response.statusCode == 200) {
-
         return WishListResponse.fromJson(response.data);
       } else {
         throw Exception('Failed to remove from wishlist');

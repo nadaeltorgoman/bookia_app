@@ -1,3 +1,4 @@
+import 'package:bookia/features/Cart/data/repo/cart_repo.dart';
 import 'package:bookia/features/home/data/model/response/best_seller/best_seller.dart';
 import 'package:bookia/features/home/data/model/response/best_seller/product.dart';
 import 'package:bookia/features/home/data/model/response/slider_response/slider.dart';
@@ -35,11 +36,26 @@ class HomeCubit extends Cubit<HomeState> {
     try {
       var response = await WishlistRepo.addToWishlist(productId);
       if (response) {
-        emit(AddedToWishList());
+        emit(AddedToWishList(message: "Added to wishlist successfully"));
       } else {
         emit(HomeError());
       }
     } on Exception catch (_) {
+      emit(HomeError());
+    }
+  }
+
+  
+  Future<void> addToCart(int productId) async {
+    emit(HomeLoading());
+    try {
+      var response = await CartRepo.addToCart(productId);
+      if (response) {
+        emit(AddedToWishList(message: "Added to cart successfully"));
+      } else {
+        emit(HomeError());
+      }
+    } catch (_) {
       emit(HomeError());
     }
   }

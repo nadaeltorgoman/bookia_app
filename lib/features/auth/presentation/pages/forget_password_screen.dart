@@ -56,7 +56,10 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Forget Password?', style: AppTextStyle.getHeadline1()),
+                      Text(
+                        'Forget Password?',
+                        style: AppTextStyle.getHeadline1(),
+                      ),
                       const Gap(15),
                       Text(
                         'Don\'t worry! It occurs. Please enter the email address linked with your account.',

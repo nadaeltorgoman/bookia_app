@@ -13,4 +13,10 @@ class AppConstants {
   static const String wishlistEP = 'wishlist';
   static const String addToWishlistEP = 'add-to-wishlist';
   static const String removeFromWishlistEP = 'remove-from-wishlist';
+
+  // Cart
+  static const String cartEP = 'cart';
+  static const String addToCartEP = 'add-to-cart';
+  static const String updateCartEP = 'update-cart';
+  static const String removeFromCartEP = 'remove-from-cart';
 }
