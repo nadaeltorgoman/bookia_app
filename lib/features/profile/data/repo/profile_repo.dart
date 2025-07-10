@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bookia/core/constants/app_constants.dart';
 import 'package:bookia/core/services/cache_helper.dart';
 import 'package:bookia/core/services/dio_provider.dart';
@@ -10,6 +12,7 @@ class ProfileRepo {
         headers: {'Authorization': 'Bearer ${SharedPref.getUserToken()}'},
       );
       if (response.statusCode == 200) {
+        log('Authorization: Bearer ${SharedPref.getUserToken()}');
         return true;
       } else {
         return false;
